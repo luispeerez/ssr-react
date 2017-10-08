@@ -1,0 +1,31 @@
+{
+  "name": "ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "Express": "^3.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "express": "^4.16.1",
+    "path": "^0.12.7",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "webpack && babel-node lib/server.js",
+    "build": "webpack && babel lib -d dist --presets es2015,stage-2",
+    "serve": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
