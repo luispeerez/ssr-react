@@ -1,35 +1,36 @@
-/*export default (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-    	console.log('state before', state);
-    	return state + 1;
-    case 'DECREMENT':
-    	return state -1;
-    default:
-      return state
-  }
-};*/
+const defaultState = {
+  counter:0, posts:[]
+};
 
-export default (state = {counter:0}, action) => {
+export default (state = defaultState, action) => {
+
+  console.log('action', action);
+
   switch (action.type) {
     case 'INCREMENT':
-      console.log('state counter', state.counter);
       let newCounter = state.counter + 1;
-      console.log('newCounter', newCounter);
       state = Object.assign({}, state,{
         counter: newCounter
       });
-      console.log('new state on INCREMENT', state);
       return state;
     case 'DECREMENT':
-      console.log('state counter', state.counter);
       let newCounterDecrement = state.counter - 1;
       state = Object.assign({}, state,{
         counter: newCounterDecrement
       });
-      console.log('new state on DECREMENT', state);
       return state;
-
+    case 'FETCH_SUCCEEDED':
+      state = Object.assign({}, state,{
+        posts: action.data
+      });
+      return state;
+    case 'FETCH_FAILED':
+      console.log('action.error', action.error);
+      state = Object.assign({}, state,{
+        errorFetch: action.error.message
+      });
+      console.log('FETCH_FAILED state', state);
+      return state;
     default:
       return state
   }
